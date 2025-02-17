@@ -42,3 +42,41 @@ console.log("Có sinh viên nào dưới 18 tuổi không?", hasUnder18 ? "Có" 
 
 const allHaveNames = students.every(student => student.name.trim().length > 0);
 console.log("Cả lớp có đầy đủ tên không?", allHaveNames ? "Có" : "Không");
+
+const promise1 = new Promise((resolve, reject) => {
+    const randomNum = Math.floor(Math.random() * 11);
+    setTimeout(() => {
+        if (randomNum % 2 === 0) {
+            resolve(students[0]);
+        } else {
+            reject("Dữ liệu lỗi");
+        }
+    }, 2000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+    const randomNum = Math.floor(Math.random() * 11);
+    setTimeout(() => {
+        if (randomNum % 2 === 0) {
+            resolve(students[1]);
+        } else {
+            reject("Dữ liệu lỗi");
+        }
+    }, 4000);
+});
+
+Promise.all([promise1, promise2])
+    .then(results => {
+        console.log("Lấy dữ liệu hoàn thành:", results);
+    })
+    .catch(error => {
+        console.error("Thông Báo:", error);
+    });
+
+Promise.race([promise1, promise2])
+    .then(result => {
+        console.log("Đã lấy được dữ liệu:", result);
+    })
+    .catch(error => {
+        console.error("Thông Báo:", error);
+    });;
