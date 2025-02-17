@@ -1,4 +1,4 @@
-// Họ và tên: Hồ Truwong Ngọc Bích
+// Họ và tên: Hồ Trương Ngọc Bích
 // MSSV: 2180601982
 
 class Student {
